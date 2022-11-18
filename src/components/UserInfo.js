@@ -11,8 +11,8 @@ function calculateLevel(xp) {
 
     while (levelNeededXP(++level) < xp) {}
 
-    return level-1
-    // return level+1
+    return level+1
+    // return level-1
 }
 
 // Credit to Olari and Robert
@@ -35,18 +35,21 @@ const UserInfo = ({username}) => {
             username: username
         }
     })
+    console.log("🚀 ~ file: UserInfo.js ~ line 38 ~ UserInfo ~ progressesInfo", progressesInfo)
 
     const transactionsInfo = useQuery(GET_TRANSACTIONS, {
         variables: {
             username: username
         }
     })
+    console.log("🚀 ~ file: UserInfo.js ~ line 45 ~ UserInfo ~ transactionsInfo", transactionsInfo)
 
     let resultTable = []
     let totalXp = 0
     let totalLv = 0
     if (progressesInfo.data && transactionsInfo.data && progressesInfo.data.user.length) {
         progressesInfo.data.user[0].progresses.forEach((progress)=>{
+            const firstRustPiscine = progress.path === "/johvi/div-01/rust"
             transactionsInfo.data.user[0].transactions.forEach((transaction)=>{
                 const found = resultTable.find((element) => element.path === progress.path)
                 if (progress.path === transaction.path && !found) {
@@ -54,6 +57,13 @@ const UserInfo = ({username}) => {
                         path: progress.path,
                         isDone: progress.isDone,
                         amount: transaction.amount,
+                        createdAt: transaction.createdAt,
+                    })
+                } else if (firstRustPiscine && transaction.path === "/johvi/div-01" && !found) {
+                    resultTable.push({
+                        path: progress.path,
+                        isDone: progress.isDone,
+                        amount: 390000,
                         createdAt: transaction.createdAt,
                     })
                 }

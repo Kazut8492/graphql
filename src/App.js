@@ -16,9 +16,9 @@ const App = () => {
     form.resetFields();
   }
 
-  useEffect(()=>{
-    console.log(username)
-  }, [username])
+  // useEffect(()=>{
+  //   console.log(username)
+  // }, [username])
 
   return (
     <>

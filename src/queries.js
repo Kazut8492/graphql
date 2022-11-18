@@ -12,7 +12,7 @@ export const GET_USER = gql`
 export const GET_PROGRESSES = gql`
     query ($username: String) {
         user (where: {login: {_eq: $username}}){
-            progresses(limit: 50, where: {isDone: {_eq:true} , _or: [{object:{type: {_eq: "project"}}}, {object: {type: {_eq: "piscine"}}}]}) {
+            progresses(limit: 50, where: {isDone: {_eq:true} , _or: [{object:{type: {_eq: "module"}}}, {object:{type: {_eq: "project"}}}, {object: {type: {_eq: "piscine"}}}]}) {
                 isDone
                 path
             }
@@ -29,6 +29,7 @@ export const GET_TRANSACTIONS = gql`
                 where: {
                     _or: [
                         {object:{type: {_eq: "project"}}},
+                        {object:{type: {_eq: "module"}}},
                         {object: {type: {_eq: "piscine"}}}
                     ],
                     type: {
