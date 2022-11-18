@@ -2,7 +2,6 @@ import { createRef, useEffect } from 'react';
 import { useQuery } from "@apollo/client"
 import { GET_USER, GET_PROGRESSES, GET_TRANSACTIONS } from "../queries"
 import { LineChart } from "../utilities/LineChart"
-// test
 
 // Credit to Olari and Robert
 // Calculates what level this amount of XP would be at
