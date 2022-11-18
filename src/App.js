@@ -8,10 +8,12 @@ import "antd/dist/antd.css"
 
 const App = () => {
   const [username, setUsername] = useState("")
+  const [form] = Form.useForm();
 
   const handleSearchSubmit = (event) => {
     setUsername(event.username)
     // reset the form when submitted
+    form.resetFields();
   }
 
   useEffect(()=>{
@@ -21,7 +23,7 @@ const App = () => {
   return (
     <>
       <main>
-        <Form onFinish={handleSearchSubmit}>
+        <Form onFinish={handleSearchSubmit} form={form} >
           <Form.Item
             label="Username"
             name="username"

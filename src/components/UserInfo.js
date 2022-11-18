@@ -22,7 +22,6 @@ function levelNeededXP(level) {
 }
 
 const UserInfo = ({username}) => {
-
     const myRef = createRef()
 
     const userInfo = useQuery(GET_USER, {
